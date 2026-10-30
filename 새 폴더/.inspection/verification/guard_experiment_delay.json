@@ -1,0 +1,356 @@
+{
+  "summary": {
+    "name": "delay",
+    "wins": 6,
+    "matches": 16,
+    "metrics": {
+      "actions": 2021,
+      "illegal": 0,
+      "friendly": 0,
+      "rock": 0,
+      "empty": 0,
+      "waits": 0,
+      "supplies": 26,
+      "shots": 119,
+      "errors": 0
+    }
+  },
+  "results": [
+    {
+      "map": 0,
+      "side": "A",
+      "first": "A",
+      "outcome": "A",
+      "metrics": {
+        "actions": 111,
+        "illegal": 0,
+        "friendly": 0,
+        "rock": 0,
+        "empty": 0,
+        "waits": 0,
+        "supplies": 3,
+        "shots": 9,
+        "errors": 0
+      },
+      "turret_hp": {
+        "A": 100,
+        "B": 100
+      }
+    },
+    {
+      "map": 0,
+      "side": "A",
+      "first": "B",
+      "outcome": "A",
+      "metrics": {
+        "actions": 105,
+        "illegal": 0,
+        "friendly": 0,
+        "rock": 0,
+        "empty": 0,
+        "waits": 0,
+        "supplies": 3,
+        "shots": 9,
+        "errors": 0
+      },
+      "turret_hp": {
+        "A": 100,
+        "B": 100
+      }
+    },
+    {
+      "map": 0,
+      "side": "B",
+      "first": "A",
+      "outcome": "turn_limit",
+      "metrics": {
+        "actions": 215,
+        "illegal": 0,
+        "friendly": 0,
+        "rock": 0,
+        "empty": 0,
+        "waits": 0,
+        "supplies": 2,
+        "shots": 2,
+        "errors": 0
+      },
+      "turret_hp": {
+        "A": 100,
+        "B": 100
+      }
+    },
+    {
+      "map": 0,
+      "side": "B",
+      "first": "B",
+      "outcome": "turn_limit",
+      "metrics": {
+        "actions": 215,
+        "illegal": 0,
+        "friendly": 0,
+        "rock": 0,
+        "empty": 0,
+        "waits": 0,
+        "supplies": 2,
+        "shots": 2,
+        "errors": 0
+      },
+      "turret_hp": {
+        "A": 100,
+        "B": 100
+      }
+    },
+    {
+      "map": 1,
+      "side": "A",
+      "first": "A",
+      "outcome": "B",
+      "metrics": {
+        "actions": 107,
+        "illegal": 0,
+        "friendly": 0,
+        "rock": 0,
+        "empty": 0,
+        "waits": 0,
+        "supplies": 2,
+        "shots": 8,
+        "errors": 0
+      },
+      "turret_hp": {
+        "A": 40,
+        "B": 100
+      }
+    },
+    {
+      "map": 1,
+      "side": "A",
+      "first": "B",
+      "outcome": "B",
+      "metrics": {
+        "actions": 110,
+        "illegal": 0,
+        "friendly": 0,
+        "rock": 0,
+        "empty": 0,
+        "waits": 0,
+        "supplies": 2,
+        "shots": 9,
+        "errors": 0
+      },
+      "turret_hp": {
+        "A": 40,
+        "B": 100
+      }
+    },
+    {
+      "map": 1,
+      "side": "B",
+      "first": "A",
+      "outcome": "A",
+      "metrics": {
+        "actions": 131,
+        "illegal": 0,
+        "friendly": 0,
+        "rock": 0,
+        "empty": 0,
+        "waits": 0,
+        "supplies": 1,
+        "shots": 8,
+        "errors": 0
+      },
+      "turret_hp": {
+        "A": 100,
+        "B": 40
+      }
+    },
+    {
+      "map": 1,
+      "side": "B",
+      "first": "B",
+      "outcome": "B",
+      "metrics": {
+        "actions": 106,
+        "illegal": 0,
+        "friendly": 0,
+        "rock": 0,
+        "empty": 0,
+        "waits": 0,
+        "supplies": 1,
+        "shots": 9,
+        "errors": 0
+      },
+      "turret_hp": {
+        "A": 100,
+        "B": 40
+      }
+    },
+    {
+      "map": 2,
+      "side": "A",
+      "first": "A",
+      "outcome": "A",
+      "metrics": {
+        "actions": 109,
+        "illegal": 0,
+        "friendly": 0,
+        "rock": 0,
+        "empty": 0,
+        "waits": 0,
+        "supplies": 3,
+        "shots": 10,
+        "errors": 0
+      },
+      "turret_hp": {
+        "A": 30,
+        "B": 100
+      }
+    },
+    {
+      "map": 2,
+      "side": "A",
+      "first": "B",
+      "outcome": "B",
+      "metrics": {
+        "actions": 108,
+        "illegal": 0,
+        "friendly": 0,
+        "rock": 0,
+        "empty": 0,
+        "waits": 0,
+        "supplies": 3,
+        "shots": 9,
+        "errors": 0
+      },
+      "turret_hp": {
+        "A": 30,
+        "B": 100
+      }
+    },
+    {
+      "map": 2,
+      "side": "B",
+      "first": "A",
+      "outcome": "B",
+      "metrics": {
+        "actions": 75,
+        "illegal": 0,
+        "friendly": 0,
+        "rock": 0,
+        "empty": 0,
+        "waits": 0,
+        "supplies": 2,
+        "shots": 8,
+        "errors": 0
+      },
+      "turret_hp": {
+        "A": 0,
+        "B": 100
+      }
+    },
+    {
+      "map": 2,
+      "side": "B",
+      "first": "B",
+      "outcome": "B",
+      "metrics": {
+        "actions": 75,
+        "illegal": 0,
+        "friendly": 0,
+        "rock": 0,
+        "empty": 0,
+        "waits": 0,
+        "supplies": 2,
+        "shots": 8,
+        "errors": 0
+      },
+      "turret_hp": {
+        "A": 0,
+        "B": 100
+      }
+    },
+    {
+      "map": 3,
+      "side": "A",
+      "first": "A",
+      "outcome": "turn_limit",
+      "metrics": {
+        "actions": 217,
+        "illegal": 0,
+        "friendly": 0,
+        "rock": 0,
+        "empty": 0,
+        "waits": 0,
+        "supplies": 0,
+        "shots": 6,
+        "errors": 0
+      },
+      "turret_hp": {
+        "A": 100,
+        "B": 100
+      }
+    },
+    {
+      "map": 3,
+      "side": "A",
+      "first": "B",
+      "outcome": "turn_limit",
+      "metrics": {
+        "actions": 217,
+        "illegal": 0,
+        "friendly": 0,
+        "rock": 0,
+        "empty": 0,
+        "waits": 0,
+        "supplies": 0,
+        "shots": 6,
+        "errors": 0
+      },
+      "turret_hp": {
+        "A": 100,
+        "B": 100
+      }
+    },
+    {
+      "map": 3,
+      "side": "B",
+      "first": "A",
+      "outcome": "A",
+      "metrics": {
+        "actions": 60,
+        "illegal": 0,
+        "friendly": 0,
+        "rock": 0,
+        "empty": 0,
+        "waits": 0,
+        "supplies": 0,
+        "shots": 8,
+        "errors": 0
+      },
+      "turret_hp": {
+        "A": 100,
+        "B": 0
+      }
+    },
+    {
+      "map": 3,
+      "side": "B",
+      "first": "B",
+      "outcome": "A",
+      "metrics": {
+        "actions": 60,
+        "illegal": 0,
+        "friendly": 0,
+        "rock": 0,
+        "empty": 0,
+        "waits": 0,
+        "supplies": 0,
+        "shots": 8,
+        "errors": 0
+      },
+      "turret_hp": {
+        "A": 100,
+        "B": 0
+      }
+    }
+  ]
+}

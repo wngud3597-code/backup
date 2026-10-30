@@ -1,0 +1,16 @@
+R	G	G	G	F	G	G	G	R	G	G	G	R	W	W	XB
+G	G	R	G	G	G	R	G	R	G	R	G	R	W	W	W
+G	R	R	G	R	G	R	G	G	G	R	G	R	W	W	W
+G	W	G	G	W	W	W	W	W	G	R	G	R	G	G	G
+G	W	G	G	W	W	W	W	W	G	R	G	R	G	G	B1
+G	W	G	G	G	G	G	G	G	T	T	G	G	G	G	G
+G	G	G	G	G	G	G	G	G	T	T	T	T	T	G	B2
+G	G	R	R	G	T	T	T	G	T	T	T	T	T	G	G
+G	G	R	R	G	T	T	T	G	T	T	T	T	T	G	B3
+G	G	R	R	G	T	T	T	G	T	T	T	T	T	G	G
+G	G	R	R	G	T	T	T	G	T	T	T	T	T	G	G
+F	G	R	R	G	T	G	G	G	G	T	T	T	G	G	F
+G	G	R	R	G	T	T	T	G	G	G	G	G	G	G	G
+G	G	R	R	G	T	T	T	G	G	G	G	G	G	G	G
+M	G	R	R	G	T	T	T	G	G	G	G	G	G	G	G
+G	G	R	R	G	T	T	T	G	G	F	G	G	G	G	G

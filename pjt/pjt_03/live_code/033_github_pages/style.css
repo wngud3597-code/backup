@@ -1,0 +1,50 @@
+/* 학습 목표
+   - 앞에서 배운 Media Query 를 내 페이지에 적용한 뒤 GitHub Pages 로 배포할 수 있다.
+   - 배포한 주소를 스마트폰으로 열어 반응형이 동작하는지 확인할 수 있다.
+   실습 TODO : 1개 */
+
+body {
+  font-family: "Malgun Gothic", sans-serif;
+  margin: 0;
+  color: #24292f;
+}
+
+header {
+  padding: 20px 40px;
+  background-color: #dfe7f5;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.hero {
+  padding: 60px 40px;
+  background-color: #f6f8fa;
+}
+
+.cards {
+  display: flex;
+  /* 한 줄에 다 안 들어가면 다음 줄로 넘김 */
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 40px;
+}
+
+.card {
+  /* 기본(모바일): 카드 하나가 한 줄 전체 */
+  width: 100%;
+  /* 테두리(border)까지 width 안에 포함 */
+  box-sizing: border-box;
+  padding: 40px 0;
+  text-align: center;
+  border: 2px solid #d6d8dd;
+  border-radius: 12px;
+}
+
+/* [실습 포인트/힌트]
+   - 지금은 PC 에서도 카드가 세로로 1개씩 쌓임
+   - 480px 이상에서 한 줄에 3개가 되도록 .card 의 width 를 바꾸기 (3개 + 간격 2개 => 30%)
+   - Media Query 실습 파일(01_media_query.css)의 @media 블록 모양 참고 */
+/* TODO 1: @media (min-width: 480px) 블록 작성 */

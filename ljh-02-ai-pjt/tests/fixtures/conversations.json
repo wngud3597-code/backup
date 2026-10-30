@@ -1,0 +1,37 @@
+{
+  "purpose": "Isolated synthetic test answers. Never load this file in the app.",
+  "movie_a": {
+    "movie_id": "test-movie-a",
+    "question": "테스트 영화 A의 첫 질문",
+    "answer": "테스트 전용 첫 답변입니다. [근거 1]",
+    "sources": [
+      {
+        "title": "테스트 전용 A 첫 출처",
+        "url": "https://example.invalid/test-a-first",
+        "text": "실제 수집 결과가 아닌 테스트 전용 근거입니다.",
+        "details": {"origin": "synthetic-test-fixture"}
+      }
+    ],
+    "next_question": "테스트 영화 A의 후속 질문",
+    "next_answer": "테스트 전용 두 번째 답변입니다. [근거 1]",
+    "next_sources": [
+      {
+        "title": "테스트 전용 A 다음 출처",
+        "url": "https://example.invalid/test-a-next",
+        "text": "이전 답변의 근거 1과 다른 테스트 전용 근거입니다."
+      }
+    ]
+  },
+  "movie_b": {
+    "movie_id": "test-movie-b",
+    "question": "테스트 영화 B의 질문",
+    "answer": "테스트 전용 B 답변입니다. [근거 1]",
+    "sources": [
+      {
+        "title": "테스트 전용 B 출처",
+        "url": "https://example.invalid/test-b",
+        "text": "다른 영화에 사용한 테스트 전용 근거입니다."
+      }
+    ]
+  }
+}

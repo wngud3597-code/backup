@@ -1,0 +1,283 @@
+
+class TeamBot(Bot):
+    """One attacker, two home guards; uses Bot's tested protocol and attack engine."""
+
+    def __init__(self, config=None, role="auto"):
+        super().__init__(config)
+        if role not in {"auto", "attack", "defend1", "defend2"}:
+            raise ValueError("Unknown team role")
+        self.requested_role = role
+        self.assigned_role = None
+        self.role = None
+        self.unit_index = None
+        self.assignment_source = None
+        self.guard_pairs = []
+        self.guard_signature = None
+
+    @staticmethod
+    def distance(p, q):
+        return abs(p[0] - q[0]) + abs(p[1] - q[1])
+
+    def _live_friends(self):
+        return {key: points[0] for key, points in self.positions.items()
+                if key == "M" or (key in FRIEND_TANKS and
+                                  int(self.allies.get(key, [100])[0]) > 0)}
+
+    def _assign_role(self):
+        home = self.positions.get("H", [None])[0]
+        friends = self._live_friends()
+        if self.assigned_role is None:
+            if self.requested_role != "auto":
+                self.assigned_role = self.requested_role
+                self.assignment_source = "explicit_role"
+            else:
+                # Actual v1.3 spawns have disjoint bands. Earlier players may
+                # have already moved before another tank receives its first M.
+                # Infer our immutable identity from our own untouched spawn.
+                native = ((self.h, self.w) == (16, 16) and
+                          home in {(15, 0), (0, 15)} and
+                          self.positions.get("X", [None])[0] == (15 - home[0], 15 - home[1]))
+                vertical = abs(self.pos[0] - home[0]) if home else -1
+                horizontal = abs(self.pos[1] - home[1]) if home else -1
+                if native and horizontal <= 1 and 4 <= vertical <= 12:
+                    self.unit_index = (vertical - 4) // 3 + 1
+                    self.assigned_role = ("defend1", "defend2", "attack")[self.unit_index - 1]
+                    self.assignment_source = "verified_spawn_band"
+                elif home and len(friends) > 1:
+                    order = sorted(friends, key=lambda key: (self.distance(friends[key], home), friends[key]))
+                    rank = order.index("M")
+                    self.assigned_role = "defend" + str(rank + 1) if rank < min(2, len(order) - 1) else "attack"
+                    self.assignment_source = "initial_home_distance"
+                else:
+                    self.assigned_role = "attack"
+                    self.assignment_source = "single_or_stage"
+        self.role = self.assigned_role
+        if self.requested_role == "auto" and self.unit_index is not None:
+            live_ids = {self.unit_index}
+            live_ids.update(int(key[1:]) for key in friends
+                            if key.startswith("M") and key[1:] in {"1", "2", "3"})
+            # Attack succession uses stable IDs, never the moving coordinates.
+            intruders = any(self.enemy_hp.get(key, 0) > 0 and
+                            any(self.distance(p, home) <= 10 for p in self.positions.get(key, []))
+                            for key in ENEMY_TANKS)
+            successor = self.unit_index == max(live_ids)
+            self.role = ("attack" if successor and
+                         (self.assigned_role == "attack" or not intruders)
+                         else "defend" + str(self.unit_index))
+        if not home or (self.requested_role == "auto" and
+                        (len(friends) <= 1 or not any(
+                            self.enemy_hp.get(key, 0) > 0 for key in ENEMY_TANKS))):
+            self.role = "attack"
+
+    def _terrain(self, p):
+        token = self.grid[p[0]][p[1]]
+        return "G" if token == "M" or token in FRIEND_TANKS | ENEMY_TANKS else token
+
+    def _view(self, p):
+        """Stable terrain coverage. Actual shots always use ray + validate."""
+        seen = set()
+        for dr, dc in DIRS.values():
+            for step in range(1, 4):
+                q = p[0] + dr * step, p[1] + dc * step
+                if not self.inside(q):
+                    break
+                seen.add(q)
+                if self._terrain(q) not in TRANSPARENT:
+                    break
+        return seen
+
+    def _refresh_pairs(self, home):
+        zone = self._forbidden_area()
+        local = [(r, c) for r in range(self.h) for c in range(self.w)
+                 if self.distance((r, c), home) <= 10]
+        signature = (home, tuple((p, self._terrain(p)) for p in local), tuple(sorted(zone)))
+        if signature == self.guard_signature:
+            return
+        self.guard_signature = signature
+        fire = {p for p in self._view(home) if self._terrain(p) in {"G", "S"}}
+        approach = {q for p in fire for dr, dc in DIRS.values()
+                    for q in [(p[0] + dr, p[1] + dc)] if self.inside(q)} - fire
+        self.guard_fire, self.guard_approach = fire, approach
+        cells = {p for p in local if self.distance(p, home) <= 7 and
+                 p not in zone and self._terrain(p) == "G"}
+        views = {p: self._view(p) for p in cells}
+
+        def coverage(seen):
+            return len(seen & fire) + 0.4 * len(seen & approach)
+
+        candidates = []
+        for p in sorted(cells):
+            for dr, dc in ((0, 1), (1, 0)):
+                q = p[0] + dr, p[1] + dc
+                if q in cells:
+                    a, b = coverage(views[p]), coverage(views[q])
+                    score = 2 * min(a, b) + 0.5 * (a + b) - 0.03 * self.distance(p, home)
+                    candidates.append((score, p, q, views[p] | views[q]))
+        candidates.sort(key=lambda item: (-item[0], item[1], item[2]))
+        self.guard_pairs = []
+        if candidates:
+            first = candidates[0]
+            self.guard_pairs.append((first[1], first[2]))
+            others = [item for item in candidates if not ({item[1], item[2]} & {first[1], first[2]})]
+            if others:
+                second = min(others, key=lambda item: (
+                    -(coverage(item[3] | first[3]) + 0.3 * item[0]), item[1], item[2]))
+                self.guard_pairs.append((second[1], second[2]))
+
+    def _guard_route(self, goals, home, reserved=(), radius=None):
+        """Bounded A*: account for cumulative sand HP and actual tree ammo."""
+        radius = max(10, self.distance(self.pos, home)) if radius is None else radius
+        goals = {p for p in goals if self.inside(p) and p not in self.blocked and
+                 self.cell(p) in {"G", "S"}}
+        if not goals or self.pos in goals:
+            return None
+        serial = itertools.count()
+        heuristic = lambda p: min(self.distance(p, goal) for goal in goals)
+        heap = [(heuristic(self.pos), 0.0, next(serial), self.pos,
+                 self.normal, self.mega, 0, 0, "")]
+        labels = {(self.pos, self.normal, self.mega, 0): [(0.0, 0)]}
+        limit = min(self.deadline, time.perf_counter() + 0.04)
+        while heap and not self.expired() and time.perf_counter() < limit:
+            _, cost, _, p, normal, mega, cleared, loss, first = heapq.heappop(heap)
+            if (cost, loss) not in labels.get((p, normal, mega, cleared), ()):
+                continue
+            self.expansions += 1
+            if p in goals and first and self.validate(first):
+                return {"command": first, "cost": cost, "goal": p, "sand_damage": loss}
+            for direction, (dr, dc) in DIRS.items():
+                q = p[0] + dr, p[1] + dc
+                if (not self.inside(q) or q in self.blocked or q in reserved or
+                        self.distance(q, home) > radius):
+                    continue
+                token = self.cell(q, cleared)
+                loss2 = loss + (10 if token == "S" else 0)
+                if loss2 >= self.hp:
+                    continue
+                n2, m2, mask2, duration = normal, mega, cleared, 1
+                if token in {"G", "S"}:
+                    action = direction + " A"
+                elif token == "T":
+                    stock = clear_trees(1, normal, mega)
+                    if stock is None:
+                        continue
+                    n2, m2 = stock
+                    mask2 |= self.tree_bits[q]
+                    duration = 2
+                    action = direction + SHELLS["normal" if normal else "mega"][1]
+                else:
+                    continue
+                command = first or action
+                cost2 = cost + duration + (loss2 - loss) * 0.08 + self.risk(q, self.hp - loss2)
+                key = q, n2, m2, mask2
+                old = labels.setdefault(key, [])
+                if any(value <= cost2 and damage <= loss2 for value, damage in old):
+                    continue
+                labels[key] = [(value, damage) for value, damage in old
+                               if not (value >= cost2 and damage >= loss2)] + [(cost2, loss2)]
+                heapq.heappush(heap, (cost2 + heuristic(q), cost2, next(serial),
+                                      q, n2, m2, mask2, loss2, command))
+        return None
+
+    def _guard_action(self, home, slot):
+        self._refresh_pairs(home)
+        pair = self.guard_pairs[slot] if slot < len(self.guard_pairs) else ()
+        reserved = {p for index, points in enumerate(self.guard_pairs) if index != slot for p in points}
+        enemies = {key: points[0] for key, points in self.positions.items()
+                   if key in ENEMY_TANKS and self.enemy_hp.get(key, 0) > 0}
+        near = min((self.distance(p, home) for p in enemies.values()), default=999)
+        shots = self._nearby_shots()
+        tanks = [shot for shot in shots if shot[0] in ENEMY_TANKS]
+        if tanks:
+            shot = min(tanks, key=lambda item: (
+                item[4] not in self.guard_fire, self.distance(item[4], home),
+                item[1] > SHELLS[item[3]][0], item[1], item[0]))
+            return shot[2], "guard_engage_tank", None, shot[0]
+        if shots:
+            return shots[0][2], "guard_visible_turret", None, shots[0][0]
+        if (near > 10 and self.mega < 2 and
+                self.config["cipher_shift"] is not None and not self.supply_failed):
+            answer = self.supply_answer()
+            if answer:
+                return "G " + answer, "guard_safe_supply", None, None
+            supply_goals = set()
+            for f in self.positions.get("F", []):
+                if self.distance(f, home) > 16 or (pair and min(self.distance(f, p) for p in pair) > 9):
+                    continue
+                for dr, dc in DIRS.values():
+                    supply_goals.add((f[0] + dr, f[1] + dc))
+            route = self._guard_route(supply_goals, home, reserved, radius=16)
+            if route:
+                return route["command"], "guard_reach_supply", route, None
+        # During an intrusion, prefer a one-step firing lane close to our post.
+        interception = []
+        if near <= 10 and (self.normal or self.mega):
+            for direction, (dr, dc) in DIRS.items():
+                q = self.pos[0] + dr, self.pos[1] + dc
+                if (not self.movable(q) or q in reserved or self.distance(q, home) > 7 or
+                        (pair and min(self.distance(q, p) for p in pair) > 3)):
+                    continue
+                for facing in DIRS:
+                    hit = self.ray(q, facing)
+                    if hit and hit[0] in enemies:
+                        interception.append((self.distance(hit[1], home), self.risk(q),
+                                             self.enemy_hp[hit[0]], direction + " A", hit[0]))
+            if interception:
+                best = min(interception)
+                return best[3], "guard_intercept_lane", None, best[4]
+        if self.pos in pair:
+            other = pair[1] if self.pos == pair[0] else pair[0]
+            for direction, (dr, dc) in DIRS.items():
+                if (self.pos[0] + dr, self.pos[1] + dc) == other and self.movable(other):
+                    return direction + " A", "guard_patrol_pair", None, None
+        route = self._guard_route(pair, home, reserved)
+        if route:
+            return route["command"], "guard_reach_post", route, None
+        moves = []
+        for direction, (dr, dc) in DIRS.items():
+            q = self.pos[0] + dr, self.pos[1] + dc
+            if self.movable(q) and q not in reserved and self.distance(q, home) <= max(10, self.distance(self.pos, home)):
+                distance = min((self.distance(q, p) for p in pair), default=self.distance(q, home))
+                score = 4 * self.risk(q) + 5 * (self.cell(q) == "S") + distance + self.recent.count(q) * 0.3
+                moves.append((score, direction + " A"))
+        if moves:
+            return min(moves)[1], "guard_safe_reposition", None, None
+        # A tree shot is legal; rocks, allies, supplies and empty lanes never are.
+        for direction, (dr, dc) in DIRS.items():
+            q = self.pos[0] + dr, self.pos[1] + dc
+            if self.inside(q) and q not in self.blocked and self.cell(q) == "T":
+                weapon = "normal" if self.normal else "mega" if self.mega else None
+                if weapon and self.validate(direction + SHELLS[weapon][1]):
+                    return direction + SHELLS[weapon][1], "guard_clear_escape_tree", None, None
+        return "S", "guard_trapped_no_safe_action", None, None
+
+    def choose(self, data):
+        started = time.perf_counter()
+        self.load(data)
+        self._assign_role()
+        if self.role == "attack":
+            command = super().choose(data)
+        else:
+            self.deadline = started + self.config["planning_ms"] / 1000
+            self.expansions = 0
+            slot = int(self.role[-1]) - 1
+            command, reason, route, target = self._guard_action(self.positions["H"][0], slot)
+            if not self.validate(command):
+                command, reason = "S", "guard_safety_no_safe_action"
+            destination = None
+            if command.endswith(" A"):
+                dr, dc = DIRS[command[0]]
+                destination = self.pos[0] + dr, self.pos[1] + dc
+            self.previous = command, self.pos, self.mega, destination
+            self.recent.append(self.pos)
+            self.last_decision = {"command": command, "reason": reason, "target": target,
+                                  "route": route, "expansions": self.expansions,
+                                  "planning_truncated": self.expired(),
+                                  "elapsed_ms": round((time.perf_counter() - started) * 1000, 3),
+                                  "emergency_wait": command == "S"}
+        self.last_decision.update({"role": self.role, "assigned_role": self.assigned_role,
+                                   "unit_index": self.unit_index,
+                                   "assignment_source": self.assignment_source,
+                                   "guard_pair": (self.guard_pairs[int(self.role[-1]) - 1]
+                                                  if self.role != "attack" and
+                                                  int(self.role[-1]) <= len(self.guard_pairs) else None)})
+        return command

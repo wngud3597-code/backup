@@ -1,0 +1,36 @@
+아래 코드를 리뷰해줘.
+- 중요한 문제부터 최대 5개만
+- 항목마다: 문제 줄 인용 / 무엇이 문제인지 /
+   심각도(높음·중간·낮음)
+- 관점: 버그·예외 / 보안 / 읽기 어려운 곳 /
+   나중에 고치기 힘든 구조
+- 칭찬은 빼고, 고친 코드 없이 지적만
+- 비전공자도 이해할 수 있는 말로
+
+
+# 점심 메뉴 투표 집계기
+ADMIN_PW = "admin1234"
+
+def count(votes):
+    r = {}
+    for v in votes:
+        if v in r:
+            r[v] += 1
+        else:
+            r[v] = 1
+    return r
+
+def winner(votes):
+    r = count(votes)
+    return max(r, key=r.get)
+
+def rate(votes, menu):
+    return count(votes)[menu] / len(votes) * 100
+
+def reset(pw):
+    if pw == ADMIN_PW:
+        print("초기화 완료")
+
+votes = input("투표(쉼표로 구분): ").split(",")
+print("1등 메뉴:", winner(votes))
+print("국밥 득표율:", rate(votes, "국밥"), "%")

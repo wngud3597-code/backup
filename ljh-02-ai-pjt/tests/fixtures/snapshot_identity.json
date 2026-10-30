@@ -1,0 +1,49 @@
+{
+  "description": "실제 배포 ZIP에서 발췌한 작품 식별 회귀 자료입니다. 생성 답변이 아니며 앱은 이 파일을 로딩하지 않습니다.",
+  "archive_name": "영화도메인_데이터_배포용.zip",
+  "license_note": "원문은 한국어 위키백과이며 배포 README의 CC BY-SA 4.0 안내를 따릅니다. URL과 원본 ZIP 멤버 SHA-256을 보존했습니다.",
+  "documents": {
+    "753091_moon": {
+      "page_id": 422453,
+      "title": "더 문",
+      "url": "https://ko.wikipedia.org/wiki/%EB%8D%94_%EB%AC%B8",
+      "text": "《더 문》(영어: Moon)은 2009년에 개봉한 영국과 미국의 SF 영화로, 덩컨 존스가 연출과 원안을 맡았다. 존스의 첫 영화 연출작이다.",
+      "source": "한국어 위키백과",
+      "movie_id": "753091",
+      "related_movie": "더 문",
+      "search_query": "더 문",
+      "collected_at": "2026-09-10",
+      "archive_member": "movielab_wiki/wikipedia/753091_더_문.json",
+      "archive_member_sha256": "413c553625427596c129ffeabb7eaf8fbf413d4e98eaa76858c35b7e00102022",
+      "text_is_opening_excerpt": true
+    },
+    "17431_moon": {
+      "page_id": 422453,
+      "title": "더 문",
+      "url": "https://ko.wikipedia.org/wiki/%EB%8D%94_%EB%AC%B8",
+      "text": "《더 문》(영어: Moon)은 2009년에 개봉한 영국과 미국의 SF 영화로, 덩컨 존스가 연출과 원안을 맡았다. 존스의 첫 영화 연출작이다.",
+      "source": "한국어 위키백과",
+      "movie_id": "17431",
+      "related_movie": "더 문",
+      "search_query": "더 문",
+      "collected_at": "2026-09-21",
+      "archive_member": "movielab_wiki/wikipedia/17431_더_문.json",
+      "archive_member_sha256": "3d43d147dbfa09b15470e4bfe30fb57064c7ad905c99bba8fdb246c824eab152",
+      "text_is_opening_excerpt": true
+    },
+    "753091_lunar": {
+      "page_id": 72789,
+      "title": "달",
+      "url": "https://ko.wikipedia.org/wiki/%EB%8B%AC",
+      "text": "달은 지구의 유일한 자연위성이고, 태양계의 위성 중에서 5번째로 크다.",
+      "source": "한국어 위키백과",
+      "movie_id": "753091",
+      "related_movie": "더 문",
+      "search_query": "달",
+      "collected_at": "2026-09-10",
+      "archive_member": "movielab_wiki/wikipedia/753091_달.json",
+      "archive_member_sha256": "e34fc6828e6d366a307510d67cdd642f5d4c36a9090cf33d211c4c725974e937",
+      "text_is_opening_excerpt": true
+    }
+  }
+}

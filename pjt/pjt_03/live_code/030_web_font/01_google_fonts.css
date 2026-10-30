@@ -1,0 +1,22 @@
+/* 학습 목표
+   - Google Fonts 에서 원하는 폰트의 코드를 가져와 웹 페이지에 적용할 수 있다.
+   실습 TODO : 2개 */
+
+/* [실습 포인트/힌트]
+   - Google Fonts => 폰트 선택 => Get font => Get embed code => @import 탭의 코드를 복사
+   - @import 는 CSS 파일 맨 위(주석 제외)에 있어야 동작함
+   - 주소 끝의 &display=swap 은 무슨 역할일까? (교재 TIP 참고) */
+/* TODO 1: 아래 빈 줄에 @import url('...'); 한 줄 붙여 넣기 */
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap");
+
+/* class 명은 자유롭게 */
+.google-font {
+  /* [실습 포인트/힌트]
+     - Google Fonts 의 CSS class 예시에서 font-family 한 줄을 가져오기
+     - 폰트 이름은 Google Fonts 에 적힌 이름과 글자 하나까지 같아야 함
+     - 쉼표 뒤 두 번째 값은 폰트를 내려받지 못했을 때 쓸 대체 폰트 (손글씨 계열 => cursive) */
+  /* TODO 2: font-family 작성 */
+  font-family: "Nanum Pen Script", cursive;
+  font-weight: 400;
+  font-style: normal;
+}

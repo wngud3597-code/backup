@@ -1,0 +1,598 @@
+{
+  "summary": {
+    "variant": "baseline",
+    "matches": 32,
+    "wins": 9,
+    "losses": 23,
+    "drawlimit": 0,
+    "metrics": {
+      "actions": 2070,
+      "illegal": 0,
+      "friendly": 0,
+      "rock": 0,
+      "empty": 0,
+      "waits": 0,
+      "supplies": 36,
+      "shots": 157,
+      "errors": 0
+    }
+  },
+  "results": [
+    {
+      "seed": 1,
+      "map": 0,
+      "side": "A",
+      "first": "A",
+      "outcome": "B",
+      "metrics": {
+        "actions": 59,
+        "illegal": 0,
+        "friendly": 0,
+        "rock": 0,
+        "empty": 0,
+        "waits": 0,
+        "supplies": 1,
+        "shots": 2,
+        "errors": 0
+      }
+    },
+    {
+      "seed": 1,
+      "map": 0,
+      "side": "A",
+      "first": "B",
+      "outcome": "B",
+      "metrics": {
+        "actions": 59,
+        "illegal": 0,
+        "friendly": 0,
+        "rock": 0,
+        "empty": 0,
+        "waits": 0,
+        "supplies": 1,
+        "shots": 2,
+        "errors": 0
+      }
+    },
+    {
+      "seed": 1,
+      "map": 0,
+      "side": "B",
+      "first": "A",
+      "outcome": "A",
+      "metrics": {
+        "actions": 76,
+        "illegal": 0,
+        "friendly": 0,
+        "rock": 0,
+        "empty": 0,
+        "waits": 0,
+        "supplies": 4,
+        "shots": 1,
+        "errors": 0
+      }
+    },
+    {
+      "seed": 1,
+      "map": 0,
+      "side": "B",
+      "first": "B",
+      "outcome": "A",
+      "metrics": {
+        "actions": 76,
+        "illegal": 0,
+        "friendly": 0,
+        "rock": 0,
+        "empty": 0,
+        "waits": 0,
+        "supplies": 4,
+        "shots": 1,
+        "errors": 0
+      }
+    },
+    {
+      "seed": 1,
+      "map": 1,
+      "side": "A",
+      "first": "A",
+      "outcome": "B",
+      "metrics": {
+        "actions": 59,
+        "illegal": 0,
+        "friendly": 0,
+        "rock": 0,
+        "empty": 0,
+        "waits": 0,
+        "supplies": 0,
+        "shots": 5,
+        "errors": 0
+      }
+    },
+    {
+      "seed": 1,
+      "map": 1,
+      "side": "A",
+      "first": "B",
+      "outcome": "B",
+      "metrics": {
+        "actions": 59,
+        "illegal": 0,
+        "friendly": 0,
+        "rock": 0,
+        "empty": 0,
+        "waits": 0,
+        "supplies": 0,
+        "shots": 5,
+        "errors": 0
+      }
+    },
+    {
+      "seed": 1,
+      "map": 1,
+      "side": "B",
+      "first": "A",
+      "outcome": "B",
+      "metrics": {
+        "actions": 107,
+        "illegal": 0,
+        "friendly": 0,
+        "rock": 0,
+        "empty": 0,
+        "waits": 0,
+        "supplies": 1,
+        "shots": 10,
+        "errors": 0
+      }
+    },
+    {
+      "seed": 1,
+      "map": 1,
+      "side": "B",
+      "first": "B",
+      "outcome": "A",
+      "metrics": {
+        "actions": 67,
+        "illegal": 0,
+        "friendly": 0,
+        "rock": 0,
+        "empty": 0,
+        "waits": 0,
+        "supplies": 0,
+        "shots": 7,
+        "errors": 0
+      }
+    },
+    {
+      "seed": 1,
+      "map": 2,
+      "side": "A",
+      "first": "A",
+      "outcome": "A",
+      "metrics": {
+        "actions": 62,
+        "illegal": 0,
+        "friendly": 0,
+        "rock": 0,
+        "empty": 0,
+        "waits": 0,
+        "supplies": 1,
+        "shots": 7,
+        "errors": 0
+      }
+    },
+    {
+      "seed": 1,
+      "map": 2,
+      "side": "A",
+      "first": "B",
+      "outcome": "A",
+      "metrics": {
+        "actions": 62,
+        "illegal": 0,
+        "friendly": 0,
+        "rock": 0,
+        "empty": 0,
+        "waits": 0,
+        "supplies": 1,
+        "shots": 7,
+        "errors": 0
+      }
+    },
+    {
+      "seed": 1,
+      "map": 2,
+      "side": "B",
+      "first": "A",
+      "outcome": "B",
+      "metrics": {
+        "actions": 62,
+        "illegal": 0,
+        "friendly": 0,
+        "rock": 0,
+        "empty": 0,
+        "waits": 0,
+        "supplies": 2,
+        "shots": 8,
+        "errors": 0
+      }
+    },
+    {
+      "seed": 1,
+      "map": 2,
+      "side": "B",
+      "first": "B",
+      "outcome": "B",
+      "metrics": {
+        "actions": 62,
+        "illegal": 0,
+        "friendly": 0,
+        "rock": 0,
+        "empty": 0,
+        "waits": 0,
+        "supplies": 2,
+        "shots": 8,
+        "errors": 0
+      }
+    },
+    {
+      "seed": 1,
+      "map": 3,
+      "side": "A",
+      "first": "A",
+      "outcome": "B",
+      "metrics": {
+        "actions": 49,
+        "illegal": 0,
+        "friendly": 0,
+        "rock": 0,
+        "empty": 0,
+        "waits": 0,
+        "supplies": 0,
+        "shots": 1,
+        "errors": 0
+      }
+    },
+    {
+      "seed": 1,
+      "map": 3,
+      "side": "A",
+      "first": "B",
+      "outcome": "B",
+      "metrics": {
+        "actions": 49,
+        "illegal": 0,
+        "friendly": 0,
+        "rock": 0,
+        "empty": 0,
+        "waits": 0,
+        "supplies": 0,
+        "shots": 1,
+        "errors": 0
+      }
+    },
+    {
+      "seed": 1,
+      "map": 3,
+      "side": "B",
+      "first": "A",
+      "outcome": "A",
+      "metrics": {
+        "actions": 52,
+        "illegal": 0,
+        "friendly": 0,
+        "rock": 0,
+        "empty": 0,
+        "waits": 0,
+        "supplies": 1,
+        "shots": 4,
+        "errors": 0
+      }
+    },
+    {
+      "seed": 1,
+      "map": 3,
+      "side": "B",
+      "first": "B",
+      "outcome": "A",
+      "metrics": {
+        "actions": 52,
+        "illegal": 0,
+        "friendly": 0,
+        "rock": 0,
+        "empty": 0,
+        "waits": 0,
+        "supplies": 1,
+        "shots": 4,
+        "errors": 0
+      }
+    },
+    {
+      "seed": 2,
+      "map": 0,
+      "side": "A",
+      "first": "A",
+      "outcome": "B",
+      "metrics": {
+        "actions": 58,
+        "illegal": 0,
+        "friendly": 0,
+        "rock": 0,
+        "empty": 0,
+        "waits": 0,
+        "supplies": 2,
+        "shots": 2,
+        "errors": 0
+      }
+    },
+    {
+      "seed": 2,
+      "map": 0,
+      "side": "A",
+      "first": "B",
+      "outcome": "B",
+      "metrics": {
+        "actions": 58,
+        "illegal": 0,
+        "friendly": 0,
+        "rock": 0,
+        "empty": 0,
+        "waits": 0,
+        "supplies": 2,
+        "shots": 2,
+        "errors": 0
+      }
+    },
+    {
+      "seed": 2,
+      "map": 0,
+      "side": "B",
+      "first": "A",
+      "outcome": "A",
+      "metrics": {
+        "actions": 61,
+        "illegal": 0,
+        "friendly": 0,
+        "rock": 0,
+        "empty": 0,
+        "waits": 0,
+        "supplies": 1,
+        "shots": 3,
+        "errors": 0
+      }
+    },
+    {
+      "seed": 2,
+      "map": 0,
+      "side": "B",
+      "first": "B",
+      "outcome": "A",
+      "metrics": {
+        "actions": 61,
+        "illegal": 0,
+        "friendly": 0,
+        "rock": 0,
+        "empty": 0,
+        "waits": 0,
+        "supplies": 1,
+        "shots": 3,
+        "errors": 0
+      }
+    },
+    {
+      "seed": 2,
+      "map": 1,
+      "side": "A",
+      "first": "A",
+      "outcome": "B",
+      "metrics": {
+        "actions": 66,
+        "illegal": 0,
+        "friendly": 0,
+        "rock": 0,
+        "empty": 0,
+        "waits": 0,
+        "supplies": 0,
+        "shots": 5,
+        "errors": 0
+      }
+    },
+    {
+      "seed": 2,
+      "map": 1,
+      "side": "A",
+      "first": "B",
+      "outcome": "B",
+      "metrics": {
+        "actions": 66,
+        "illegal": 0,
+        "friendly": 0,
+        "rock": 0,
+        "empty": 0,
+        "waits": 0,
+        "supplies": 0,
+        "shots": 5,
+        "errors": 0
+      }
+    },
+    {
+      "seed": 2,
+      "map": 1,
+      "side": "B",
+      "first": "A",
+      "outcome": "A",
+      "metrics": {
+        "actions": 58,
+        "illegal": 0,
+        "friendly": 0,
+        "rock": 0,
+        "empty": 0,
+        "waits": 0,
+        "supplies": 0,
+        "shots": 5,
+        "errors": 0
+      }
+    },
+    {
+      "seed": 2,
+      "map": 1,
+      "side": "B",
+      "first": "B",
+      "outcome": "B",
+      "metrics": {
+        "actions": 102,
+        "illegal": 0,
+        "friendly": 0,
+        "rock": 0,
+        "empty": 0,
+        "waits": 0,
+        "supplies": 1,
+        "shots": 9,
+        "errors": 0
+      }
+    },
+    {
+      "seed": 2,
+      "map": 2,
+      "side": "A",
+      "first": "A",
+      "outcome": "B",
+      "metrics": {
+        "actions": 60,
+        "illegal": 0,
+        "friendly": 0,
+        "rock": 0,
+        "empty": 0,
+        "waits": 0,
+        "supplies": 0,
+        "shots": 10,
+        "errors": 0
+      }
+    },
+    {
+      "seed": 2,
+      "map": 2,
+      "side": "A",
+      "first": "B",
+      "outcome": "A",
+      "metrics": {
+        "actions": 90,
+        "illegal": 0,
+        "friendly": 0,
+        "rock": 0,
+        "empty": 0,
+        "waits": 0,
+        "supplies": 4,
+        "shots": 10,
+        "errors": 0
+      }
+    },
+    {
+      "seed": 2,
+      "map": 2,
+      "side": "B",
+      "first": "A",
+      "outcome": "B",
+      "metrics": {
+        "actions": 75,
+        "illegal": 0,
+        "friendly": 0,
+        "rock": 0,
+        "empty": 0,
+        "waits": 0,
+        "supplies": 2,
+        "shots": 8,
+        "errors": 0
+      }
+    },
+    {
+      "seed": 2,
+      "map": 2,
+      "side": "B",
+      "first": "B",
+      "outcome": "B",
+      "metrics": {
+        "actions": 75,
+        "illegal": 0,
+        "friendly": 0,
+        "rock": 0,
+        "empty": 0,
+        "waits": 0,
+        "supplies": 2,
+        "shots": 8,
+        "errors": 0
+      }
+    },
+    {
+      "seed": 2,
+      "map": 3,
+      "side": "A",
+      "first": "A",
+      "outcome": "B",
+      "metrics": {
+        "actions": 59,
+        "illegal": 0,
+        "friendly": 0,
+        "rock": 0,
+        "empty": 0,
+        "waits": 0,
+        "supplies": 0,
+        "shots": 7,
+        "errors": 0
+      }
+    },
+    {
+      "seed": 2,
+      "map": 3,
+      "side": "A",
+      "first": "B",
+      "outcome": "B",
+      "metrics": {
+        "actions": 59,
+        "illegal": 0,
+        "friendly": 0,
+        "rock": 0,
+        "empty": 0,
+        "waits": 0,
+        "supplies": 0,
+        "shots": 5,
+        "errors": 0
+      }
+    },
+    {
+      "seed": 2,
+      "map": 3,
+      "side": "B",
+      "first": "A",
+      "outcome": "A",
+      "metrics": {
+        "actions": 55,
+        "illegal": 0,
+        "friendly": 0,
+        "rock": 0,
+        "empty": 0,
+        "waits": 0,
+        "supplies": 1,
+        "shots": 1,
+        "errors": 0
+      }
+    },
+    {
+      "seed": 2,
+      "map": 3,
+      "side": "B",
+      "first": "B",
+      "outcome": "A",
+      "metrics": {
+        "actions": 55,
+        "illegal": 0,
+        "friendly": 0,
+        "rock": 0,
+        "empty": 0,
+        "waits": 0,
+        "supplies": 1,
+        "shots": 1,
+        "errors": 0
+      }
+    }
+  ]
+}

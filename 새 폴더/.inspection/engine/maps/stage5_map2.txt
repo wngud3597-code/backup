@@ -1,0 +1,10 @@
+G	G	G	G	G	R	G	W	W	XB
+G	R	G	R	G	R	G	W	W	W
+G	W	R	G	G	R	G	G	G	G
+G	W	G	G	G	G	R	G	R	G
+G	W	W	G	G	G	G	G	R	G
+G	G	W	G	G	T	T	T	R	G
+G	G	G	R	T	T	R	G	T	T
+G	W	G	R	R	R	R	G	W	W
+M	W	G	G	G	G	G	G	G	G
+G	W	G	G	G	G	G	G	G	G

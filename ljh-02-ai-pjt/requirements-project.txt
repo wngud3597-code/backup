@@ -1,0 +1,17 @@
+# Project metadata-indexing dependencies; keep the exercise requirements intact.
+# Records the currently tested environment; PDF versions are a reference, not
+# an instruction to force upgrades/downgrades. Change only for a proven need.
+-r requirements.txt
+
+# Existing SDK used for the GMS-compatible embedding endpoint.
+openai==2.54.0
+
+# Reuse the existing tested version; do not force unrelated version changes.
+langsmith==0.10.17
+
+# Local persistent vector store. LangChain's Embeddings interface is used directly;
+# the unused langchain-chroma adapter is intentionally deferred.
+chromadb==1.5.9
+
+# Stage four: StateGraph retrieve -> generate. Resolver checked with existing pins.
+langgraph==1.2.10

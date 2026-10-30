@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ThRead - Popular Thread</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <style>
+      /* 폰트 정의 */
+      @font-face {
+        font-family: "SBAggro_L";
+        src: url("assets/fonts/SBAggroOTF_L.ttf") format("truetype");
+      }
+      @font-face {
+        font-family: "GmarketSansTTFMedium";
+        src: url("assets/fonts/GmarketSansTTFMedium.ttf") format("truetype");
+      }
+
+      /* 섹션 제목 */
+      .popular-thread {
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+      .popular-thread .section-title {
+        font-family: "GmarketSansTTFMedium", sans-serif;
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+      }
+      .popular-thread .section-subtitle {
+        font-family: "SBAggro_L", sans-serif;
+        font-size: 0.9rem;
+        color: #6c757d;
+      }
+
+      /* 섹션 폭 80% + 중앙 정렬 */
+      .thread-list {
+        width: 80%;
+        margin: 0 auto;
+      }
+
+      /* 카드 */
+      .thread-card .card-img-top {
+        height: 200px; /* 이미지 높이 고정 */
+        object-fit: cover;
+      }
+      .thread-card .card-title {
+        font-family: "GmarketSansTTFMedium", sans-serif;
+        font-size: 1rem;
+      }
+      .thread-card .card-text {
+        font-family: "SBAggro_L", sans-serif;
+        font-size: 0.85rem;
+        color: #6c757d;
+      }
+      .thread-card .card-footer {
+        font-family: "SBAggro_L", sans-serif;
+        font-size: 0.8rem;
+        color: #6c757d;
+      }
+      .thread-card .book-title {
+        color: #fe4a51;
+      }
+
+      /* Pagination: Bootstrap 클래스보다 명시도가 높은 선택자로 덮어쓰기 */
+      .popular-section .pagination .page-item .page-link {
+        border: none;
+        background-color: transparent;
+        color: #6c757d;
+        box-shadow: none;
+      }
+      .popular-section .pagination .page-item.active .page-link {
+        background-color: transparent;
+        color: #fe4a51;
+        border: none;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 인기 쓰레드 섹션 -->
+    <section class="thread popular-section py-5 bg-light">
+      <div class="popular-thread">
+        <h3 class="section-title">지금 이 쓰레드</h3>
+        <h3 class="section-subtitle">최근 사람들이 많이 공감한 게시글입니다</h3>
+      </div>
+
+      <div class="thread-list">
+        <!-- 모바일(576px 미만) 1열, 그 이상 3열 -->
+        <div class="row row-cols-1 row-cols-sm-3 g-4">
+          <div class="col">
+            <div class="card thread-card h-100 text-center">
+              <img
+                src="assets/threads/img1.jpg"
+                class="card-img-top"
+                alt="쓰레드 이미지 1"
+              />
+              <div class="card-body">
+                <h5 class="card-title">
+                  흔들리는 바람 속에서도 멈추지 않는 용기
+                </h5>
+                <p class="card-text">
+                  언젠가부터 삶의 무게가 나를 덮어오기 시작했다. 무심코 읽은 이
+                  책은 그런 내게 용기의 씨앗을 심어주었다. 겉으로는 무심해
+                  보이는 주인공...
+                </p>
+              </div>
+              <div class="card-footer bg-transparent border-0 mt-auto">
+                김소민 | <span class="book-title">바람을 걸어가는 아이</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col">
+            <div class="card thread-card h-100 text-center">
+              <img
+                src="assets/threads/img2.jpg"
+                class="card-img-top"
+                alt="쓰레드 이미지 2"
+              />
+              <div class="card-body">
+                <h5 class="card-title">
+                  꿈은 언제나 현실이 될 준비를 하고 있다
+                </h5>
+                <p class="card-text">
+                  내 작은 꿈도 조금씩 성장해 가고 있음을 느끼고, 감사하게 되었다
+                </p>
+              </div>
+              <div class="card-footer bg-transparent border-0 mt-auto">
+                박지후 | <span class="book-title">내 안의 작은 불씨</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col">
+            <div class="card thread-card h-100 text-center">
+              <img
+                src="assets/threads/img3.jpg"
+                class="card-img-top"
+                alt="쓰레드 이미지 3"
+              />
+              <div class="card-body">
+                <h5 class="card-title">
+                  인공지능 문제 해결자로 성장하는 로드맵
+                </h5>
+                <p class="card-text">
+                  기술적인 지식뿐만 아니라 창의적인 문제 해결 접근법과 꾸준한
+                  학습의 중요성을 강조한다. 단순한 암기가 아닌, 스스로 사고하고
+                  새로운 해결책을 모색...
+                </p>
+              </div>
+              <div class="card-footer bg-transparent border-0 mt-auto">
+                박현우 | <span class="book-title">Mastering AI</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col">
+            <div class="card thread-card h-100 text-center">
+              <img
+                src="assets/threads/img4.jpg"
+                class="card-img-top"
+                alt="쓰레드 이미지 4"
+              />
+              <div class="card-body">
+                <h5 class="card-title">사소함이 지닌 놀라운 힘</h5>
+                <p class="card-text">
+                  작은 행동 하나, 간단한 대화 한 마디가 얼마나 큰 변화를 만들어
+                  낼 수 있는지 깨닫게 해 준 것이다.
+                </p>
+              </div>
+              <div class="card-footer bg-transparent border-0 mt-auto">
+                이윤서 | <span class="book-title">작은 시작, 큰 기적</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col">
+            <div class="card thread-card h-100 text-center">
+              <img
+                src="assets/threads/img5.jpg"
+                class="card-img-top"
+                alt="쓰레드 이미지 5"
+              />
+              <div class="card-body">
+                <h5 class="card-title">상실의 아픔을 넘어 빛으로</h5>
+                <p class="card-text">
+                  '자신을 잃지 않는 법'이 무엇인지 고민하는 사람들에게 큰 위로가
+                  될 책.
+                </p>
+              </div>
+              <div class="card-footer bg-transparent border-0 mt-auto">
+                최민정 | <span class="book-title">다시 피어나는 꽃처럼</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="col">
+            <div class="card thread-card h-100 text-center">
+              <img
+                src="assets/threads/img6.jpg"
+                class="card-img-top"
+                alt="쓰레드 이미지 6"
+              />
+              <div class="card-body">
+                <h5 class="card-title">아이러니 속에서 피어나는 희망</h5>
+                <p class="card-text">
+                  모든 상황이 뒤집히고, 예상이 깨지는 순간들이 이어졌지만 그
+                  속에서 반짝이는 희망의 불씨가 있었던 이야기
+                </p>
+              </div>
+              <div class="card-footer bg-transparent border-0 mt-auto">
+                정우진 | <span class="book-title">거꾸로 흐르는 강물</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pagination -->
+      <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center mt-4">
+          <li class="page-item active" aria-current="page">
+            <a class="page-link" href="#">1</a>
+          </li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+        </ul>
+      </nav>
+    </section>
+
+    <!-- Bootstrap JS -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

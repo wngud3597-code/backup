@@ -1,0 +1,8 @@
+R	G	R	G	G	G	G	XB
+G	G	G	G	G	G	G	G
+G	R	W	W	W	W	G	R
+G	G	W	W	G	G	G	G
+G	G	G	G	W	W	G	G
+R	G	W	W	W	W	R	G
+M	G	G	G	G	G	G	G
+G	G	G	G	R	G	R	R

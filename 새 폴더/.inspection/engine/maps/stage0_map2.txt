@@ -1,0 +1,16 @@
+T	T	T	T	G	G	F	G	G	F	G	T	G	G2	G2	XB
+T	T	T	T	G	G	G	G	G	T	G	G	G	G2	G2	G2
+T	T	T	T	G	G	G	G	T	T	G	T	G	G2	G2	G2
+G	G	G	T	G	T	T	G	G	G	G	G	G	G	G	G
+G	G	G	T	G	G	G	T	G	G	G	G	T	G	G	G
+G	G	G	T	G	G	F	T	G	T	T	G	T	G	G	G
+G	G	G	T	G	G	G	T	G	T	T	G	T	G	G	G
+G	G	G	T	G	T	T	G	G	G	G	G	T	G	G	G
+G	G	G	T	G	G	G	G	G	T	T	G	T	G	G	G
+G	G	G	T	G	T	T	G	T	G	G	G	T	G	G	G
+G	G	G	T	G	T	T	G	T	F	G	G	T	G	G	G
+G	G	G	T	G	G	G	G	T	G	G	G	T	G	G	G
+G	G	G	G	G	G	G	G	G	T	T	G	T	G	G	G
+G1	G1	G1	G	T	G	T	T	G	G	G	G	T	T	T	T
+G1	G1	G1	G	G	G	T	G	G	G	G	G	T	T	T	T
+XA	G1	G1	G	T	G	F	G	G	F	G	G	T	T	T	T

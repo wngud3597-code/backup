@@ -1,0 +1,29 @@
+{% extends "articles/base.html" %}
+
+<!-- articles/dinner.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>저녁 메뉴판</h1>
+  <p>오늘 {{picked}} 메뉴는 {{picked|length}} 같습니다.</p>
+  <h2>메뉴판</h2>
+  <ul>
+    {% for food in foods%}
+    <li> {{food}}<li>
+      {% endfor %}
+      </ul>
+{% if foods|length == 0%}
+      <p>오늘은 메뉴가 소진되었습니다.</p>
+      {% else %}
+      <p>아직메뉴가 남았습니다.</p>
+      {% endif %}
+
+
+</body>
+</html>

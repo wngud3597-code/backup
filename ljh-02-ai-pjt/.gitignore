@@ -1,0 +1,26 @@
+# 비밀 설정: 예제 파일만 별도 검토 후 포함한다.
+.env
+.env.*
+!.env.example
+.streamlit/secrets.toml
+
+# 가상환경과 Python 도구 캐시
+venv/
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# 수집·색인·실행 과정의 생성 파일
+data/runtime/
+.chroma/
+chroma_db/
+artifacts/
+
+# 제출 정리용 로컬 복사본·개인 보관 자료
+/제출제외_개인보관/
+/제출용_최신본/

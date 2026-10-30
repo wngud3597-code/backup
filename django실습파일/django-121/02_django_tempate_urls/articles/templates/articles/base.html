@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  {% comment %} bootstrap css CDN {% endcomment %}
+  {% block style %}
+  {% endblock style %}
+</head>
+<body>
+  <a href="{% url "articles:index" %}">Index</a>
+  <a href="{% url "articles:dinner" %}">Dinner</a>
+  <a href="{% url "articles:search" %}">Fake Naver</a>
+  <a href="{% url "articles:throw" %}">Throw</a>
+  <a href="{% url "pages:index" %}">두번째 앱의 메인 페이지</a>
+  {% block content %}
+  {% endblock content %}
+  {% comment %} Bootstrap js CDN {% endcomment %}
+</body>
+</html>
